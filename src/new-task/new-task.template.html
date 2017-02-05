@@ -1,0 +1,50 @@
+<div class="col-md-4 col-sm-10 col-xs-12" md-whiteframe="1" id="newTaskBox" ng-class="{'newTaskBox-float' : $ctrl.float}">
+	<p id="newTaskPlaceholder" ng-click="$ctrl.showTextarea()" ng-show="$ctrl.showNewTaskPlaceholder == true">Create a new task...</p>	
+	<div ng-show="$ctrl.showNewTaskPlaceholder == false">
+		<input 
+			type="text" name="newTaskTitle" id="newTaskTitle"
+			placeholder="Title goes here..."
+			ng-model="$ctrl.newTaskTitle"
+			ng-keyup="$ctrl.closeOnEsc($event)"
+			>
+		<textarea 
+			id="newTaskTextBoxId" name="newTaskTextarea" cols="100"	
+			class="form-control col-md-12 newTaskTextarea"
+			placeholder="What do you need to do?" 
+			ng-class="{'noScroll' : $ctrl.noScroll}"  
+			focus-this="$ctrl.showNewTaskPlaceholder == false" 
+			ng-keyup="$ctrl.autoExpand($event)" 
+			ng-model="$ctrl.newTaskTextBox" 
+			ng-trim="true"
+			>
+			</textarea>
+		<!-- <div class="clearfix"></div> -->
+		<div id="newTaskIcons">
+			<md-menu>			 
+				 <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button">
+				  <span md-menu-origin class="glyphicon glyphicon-tags" aria-label="Labels"></span>
+				 </md-button>
+				 <md-menu-content class="taskPropMenu">				   
+				   <md-menu-item ng-repeat="label in $ctrl.labelList">
+				   		<md-checkbox ng-model="$ctrl.newTaskLabels[$index]">
+				   			<span md-menu-align-target class="glyphicon glyphicon-tag propMenuIcon" style="color:{{label.color}}"></span>
+				   			<span>{{label.label}}</span>
+				  		</md-checkbox>
+				   </md-menu-item>				 
+				 </md-menu-content>
+			</md-menu>			
+		 	<md-datepicker 
+		 		ng-model="$ctrl.newTaskDate" 
+		 		ng-model-options="{
+					updateOn: 'default blur',
+						debounce: { 'default': 500, 'blur': 0 },
+						timezone: '+0200'
+					}"
+		 		md-open-on-focus="true"
+		 		ng-focus="$ctrl.menuOpen = true"
+		 		ng-blur="$ctrl.menuIsClose()"
+		 		>
+		 	</md-datepicker>	
+		</div>
+	</div>	
+</div>

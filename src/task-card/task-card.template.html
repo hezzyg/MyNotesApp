@@ -1,0 +1,51 @@
+<md-card 
+	md-theme="default" 
+		md-theme-watch 
+		ng-mouseenter="$ctrl.showCardActionBtns[$index] = true"
+		ng-mouseleave="$ctrl.showCardActionBtns[$index] = false"
+		class="card">
+    <md-card-title>
+      <md-card-title-text class="md-card-title-text" >
+        <span class="md-headline"><span md-highlight-text="$ctrl.searchterm" md-highlight-flags="ig">{{$ctrl.task.title}}</span>
+        <a href="" ng-click="$ctrl.editTask($ctrl.task.id)" ng-show="$ctrl.showCardActionBtns[$index]" class="md-card-actions md-card-edit-btn"><span class="glyphicon glyphicon-pencil"></span></a>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content class="md-card-content" layout-xs="column" layout="row" flex layout-wrap>
+    	<div class="textWrap" md-highlight-text="$ctrl.searchterm" md-highlight-flags="ig">{{$ctrl.task.description}}</div>        	
+    </md-card-content>		          
+    <md-card-actions layout="row" layout-align="end center" class="md-card-actions">
+    	<div class="md-card-actions-space" ng-show="$ctrl.showCardActionBtns[$index] || $ctrl.menuOpen">		
+          <md-button class="md-icon-button removeBtn" aria-label="Remove" ng-click="$ctrl.deleteTask($ctrl.task.id)" aria-label="Delete Task">
+          <span class="glyphicon glyphicon-trash"></span>
+          </md-button>
+          <md-menu>			 
+			 <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button">
+			  <span md-menu-origin class="glyphicon glyphicon-tags" aria-label="Labels"></span>
+			 </md-button>
+			 <md-menu-content class="taskPropMenu">				   
+			   <md-menu-item ng-repeat="label in $ctrl.labelList">
+			   		<md-checkbox ng-model="$ctrl.task.labels[$index]" ng-change="$ctrl.labelChanged = true" >
+			   			<span md-menu-align-target class="glyphicon glyphicon-tag propMenuIcon" style="color:{{label.color}}"></span>
+			   			<span>{{label.label}}</span>
+			  		</md-checkbox>
+			   </md-menu-item>				 
+			 </md-menu-content>
+			</md-menu>
+			<md-datepicker 
+		 		ng-model="$ctrl.task.date" 
+		 		ng-model-options="{
+					updateOn: 'default blur',
+						debounce: { 'default': 500, 'blur': 0 },
+						timezone: '+0200'
+					}"
+		 		md-open-on-focus="true"
+		 		ng-focus="$ctrl.menuOpen = true"
+		 		ng-blur="$ctrl.menuOpen = false"
+		 		ng-change="$ctrl.dateChangedEvent()"
+		 		md-hide-icons="triangle"
+		 		>
+		 	</md-datepicker>
+      </div>
+    </md-card-actions>
+</md-card>

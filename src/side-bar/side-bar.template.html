@@ -1,0 +1,111 @@
+<div>
+	<div class="sideBarBlock">
+		<ul class="nav sideBarLi">
+			<li class="menuItem" 
+				ng-repeat="time in $ctrl.timeSections"
+				ng-click="$ctrl.chooseTime($index)"
+				ng-class="{'active' : ($index==$ctrl.chosenTime)}"
+				ng-show="$ctrl.showSidebarMenu[$index]">
+				<span class="item">{{time}}</span>
+			</li>
+		</ul>
+	</div>
+	<div class="sideBarBlock labelBlock">		
+		<ul class="nav sideBarLi">
+			<li class="menuItem bgHover" 
+				ng-mouseenter = "$ctrl.mouseHoverLabel[$index] = true"
+				ng-mouseleave = "$ctrl.mouseHoverLabel[$index] = false" 
+				ng-repeat="label in $ctrl.labelList"
+				ng-click="$ctrl.chooseLabel($index)"
+				ng-class="{'active' : ($index==$ctrl.chosenLabel)}"
+				ng-show="$ctrl.showSidebarMenu[$index+$ctrl.timeSectionsLength]">
+					<span 
+					class="glyphicon glyphicon-tag labelColorBullet" 
+					style="color:{{label.color}}"
+					uib-popover-template="$ctrl.labelColorPopoverTemplateUrl"
+					popover-placement="top-left" 
+					popover-animation="true" 
+					popover-trigger="{outsideClick: outsideClick}">		
+					</span>
+					<input 
+						type="text" name="label_{{$index}}" id="label_{{$index}}" class="labelInput" 
+						value="{{label.label}}" maxlength="15" minlength="2" 
+						size="15"
+						focus-this="$ctrl.editLabel[$index]"
+						ng-disabled="!$ctrl.editLabel[$index]" 
+						ng-model="$ctrl.labelList[$index].label"	 
+						ng-focus="$ctrl.saveTempLabelName($index)"
+						ng-blur="$ctrl.checkValidLabelName($index)"
+						ng-keydown = "$ctrl.showError[$index] = false"
+						uib-popover-template="$ctrl.InputErrorPopoverTemplateUrl"
+						popover-placement="bottom-left" 
+						popover-animation="true" 
+						popover-trigger="{none}"
+						popover-is-open ="$ctrl.showError[$index]"
+						popover-class="errorPopover">
+					<span 
+					class="glyphicon glyphicon-pencil labelEditBtn" 
+					ng-class="{'labelEditBtnHoverLabel' : $ctrl.mouseHoverLabel[$index]}"
+					ng-click="$ctrl.editLabel($index)"
+					ng-show="!$ctrl.editLabel[$index]">					
+					</span>					
+					<button id="deleteLabelBtn" ng-show="$ctrl.editLabel[$index]">
+						<span class="glyphicon glyphicon-remove" ng-click="$ctrl.showDelDiag($index)"></span>
+					</button>
+
+				<!-- delete dialog -->
+				<div class="wrapper" ng-show="$ctrl.showDeleteDialog[$index]">
+				<div 
+					class="deleteLabelDialogBox" tabindex="0" md-whiteframe="2"
+					focus-this="$ctrl.showDeleteDialog[$index]" 
+					ng-mouseleave="$ctrl.mouseleave[$index] = false" 
+					ng-mouseenter="$ctrl.mouseleave[$index] = true" 
+					ng-blur="$ctrl.checkHide($index)">
+					<form name="deleteForm" novalidate>
+						<p>Are you sure you want to delete "{{label.label}}" label?</p>
+						<div class="input-group">
+							<input type="button" name="yesBtn" value="Yes" class="btn-primary btn diagBtn" ng-click="$ctrl.deleteLabel($index)">
+							<input type="button" name="noBtn" value="No" 
+							class="btn-danger btn diagBtn" 
+							ng-click="$ctrl.showDeleteDialog[$index] = !$ctrl.showDeleteDialog[$index]">
+						</div>
+					</form>
+				</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- Add new label -->
+	<div class="sideBarBlock addNewLabelBox" ng-show="$ctrl.showAddNewLabel && !$ctrl.labelAddedMsg">
+		<hr class="sidebarHr" ng-class="{'sidebarHrDisplay' : $ctrl.showHR}">		
+		<div class="addLabelBtn" ng-class="{'changeColor' : $ctrl.showNewLabelForm}" ng-click="$ctrl.openAddNewLabel()">
+			<span class="glyphicon glyphicon-plus"></span> Add new label			
+		</div>
+		<form novalidate class="form-responsive" name="newForm" ng-show="!$ctrl.labelAddedMsg">
+			<div class="input-group" ng-show="$ctrl.showNewLabelForm">
+				<span class="input-group-addon newTagIcon">
+					<span 
+					class="glyphicon glyphicon-tag" 
+					style="color:{{$ctrl.newLabel.color}}"
+					uib-popover-template="$ctrl.newLabelColorPopoverTemplateUrl"
+					popover-placement="top-left" 
+					popover-animation="true" 
+					popover-trigger="{outsideClick: outsideClick}">
+					</span>
+				</span>			
+				<input 
+					required type="text" name="newLabel" id="newLabelInput" 
+					class="form-control" 
+					ng-model="$ctrl.newLabel.label" 
+					minlength="2" maxlength="15" size="15"
+					focus-this="$ctrl.showNewLabelForm">
+				<span class="input-group-addon" ng-click="$ctrl.saveNewlabel()" ng-show="newForm.newLabel.$valid">
+					<button id="newLabelSubmitBtn" type="submit"><span class="glyphicon glyphicon-ok"></span>
+				</span></button>
+			</div>
+		</form>
+	</div>
+	<div class="successMsg text-center" ng-show="$ctrl.labelAddedMsg">
+		{{$ctrl.labelAddedMsg}}
+	</div>
+</div>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="ToDoApp">
+<head>
+	<title>My Notes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#F2EEE2"/>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- JQuery mini color css -->
+	<link rel="stylesheet" type="text/css" href="src/helpers/jquery-minicolors/jquery.minicolors.css">
+	<!-- Angular Material style sheet -->
+  	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  	<!-- SHRIKHAND FONT -->
+  	<link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+	<!-- LIBRE FRANKLIN FONT -->
+  	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" type="text/css" href="css/main.styles.css">
+	<!-- MEDIA QUERIES CSS -->
+	<link rel="stylesheet" type="text/css" href="css/media-queries.style.css">
+
+</head>
+<body ng-controller="TopController as topCtrl">
+
+	<!-- TOP NAVBAR -->
+	<nav class="navbar navbar-fixed-top" md-whiteframe="3" ng-class="{'extendTopBar' : topCtrl.showSearchXs && topCtrl.screenSize}">
+		<div class="container-fluid">
+			<div class="navbar-header col-md-10 col-sm-10 col-xs-10">
+				<button type="button" class="sidebar-toggle-btn "  ng-click='topCtrl.sidebarToggle()'>	
+		            <span class="sr-only">Toggle sidebar</span>
+		            <span class="glyphicon glyphicon-menu-hamburger"></span>
+	          	</button>
+	          <a class="navbar-brand" href="#">My Notes</a>
+	          <search-bar term="topCtrl.searchTerm" class="hidden-xs"></search-bar>
+			</div>
+			<div class="navbar col-md-2 col-sm-2 col-xs-2 ">			
+		        <ul class="xs-navbar-icons">
+		            <li class="navbar-btn visible-xs-inline" ng-class="{'isActive' : topCtrl.showSearchXs}" ng-click="topCtrl.showSearchXs = !topCtrl.showSearchXs">
+		            	<a href="#"><span class="glyphicon glyphicon-search "></span></a>	        
+		            </li>
+		            <li class="navbar-btn">
+		            	<a href="#"><span class="glyphicon glyphicon-cog"></span></a>
+		            </li>  
+		        </ul>
+	        </div>
+	        <div class="xs-searchbar col-xs-10 col-xs-offset-1 visibe-xs-block hidden-sm hidden-md hidden-lg" ng-show="topCtrl.showSearchXs">
+	        	<search-bar term="topCtrl.searchTerm"></search-bar>
+	        </div>	          
+	    </div>
+	</nav>
+
+	<!-- MAIN  -->
+	<div class="container-fluid">
+		<div class="row mainWrapper">
+			<!-- SIDEBAR -->
+			<div id="sideBar" class="sideBar">
+				<side-bar></side-bar>
+			</div>		
+			<!-- CONTENT PANE -->
+			<div class="noSidePadding">
+				<ui-view autoscroll="false"></ui-view>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- JQUERY 3.1.1 -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- BOOTSTRAP Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- ANGULAR 1.5.8 -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- ANGULAR TOUCH -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.5.9/angular-touch.min.js"></script>
+	<!-- ANGULAR UI-ROUTER -->
+	<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<!-- ANGULAR UI BOOTSTRAP -->
+	<script type="text/javascript" src="src/helpers/ui-bootstrap/ui-bootstrap-tpls-2.2.0.min.js"></script>	
+	<!-- JQUERY MINI COLORS -->
+	<script type="text/javascript" src="src/helpers/jquery-minicolors/jquery.minicolors.js"></script>
+	<!-- ANGULAR MINI COLORS -->
+	<script type="text/javascript" src="src/helpers/jquery-minicolors/angular-minicolors.js"></script>
+	<!-- ANGULAR ANIMATE -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<!-- ANGULAR MATERIAL -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	<!-- MOMENT JS -->
+	<script type="text/javascript" src="src/helpers/moment.js/moment.js"></script>
+	<!-- ANGULAR MASONRY -->
+	<script type="text/javascript" src="src/helpers/angular-masonry/angular-masonry-directive.js
+	"></script>
+	<script type="text/javascript" src="src/helpers/angular-masonry/masonry.pkgd.min.js"></script>
+	<!-- JQUERY NICE SCORLL -->
+	<script type="text/javascript" src="src/helpers/jquery.nicescroll.340/jquery.nicescroll.js"></script>	
+
+	<!-- ANGULAR MODULE -->
+	<script type="text/javascript" src="src/js/todoapp.module.js"></script>
+	<!-- ROUTES -->
+	<script type="text/javascript" src="src/js/routes.js"></script>
+
+	<!-- APP COMPONENTS -->
+	<script type="text/javascript" src="src/js/todoapp.top.controller.js"></script>
+	<script type="text/javascript" src="src/js/todoapp.services.js"></script>
+	<script type="text/javascript" src="src/js/todoapp.config.js"></script>
+	<script type="text/javascript" src="src/js/todoapp.run.js"></script>
+	<script type="text/javascript" src="src/js/todoapp.const.js"></script>
+	<script type="text/javascript" src="src/js/todoapp.setfocus.directive.js"></script>
+	<script type="text/javascript" src="src/main/main.controller.js"></script>
+	<script type="text/javascript" src="src/js/todoapp.clickoutside.directive.js"></script>
+	<script type="text/javascript" src="src/side-bar/side-bar.component.js"></script>
+	<script type="text/javascript" src="src/search-bar/search-bar.component.js"></script>
+	<script type="text/javascript" src="src/new-task/new-task.component.js"></script>
+	<script type="text/javascript" src="src/show-tasks-cards/todoapp.show-tasks-cards.component.js"></script>
+	<script type="text/javascript" src="src/task-card/task-card.component.js"></script>
+	<script type="text/javascript" src="src/edit-task/edit-task.component.js"></script>	
+
+</body>
+</html>
