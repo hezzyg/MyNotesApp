@@ -8,13 +8,7 @@ function TodoServices (CONST, $timeout, $rootScope) {
 	var service = this;
 	var date = new Date();	
 	var today = date.getDate();	
-	var tommorow = date.setDate(date.getDate() + 1);
-
-	var $grid = $('.grid').masonry({
-		// specify itemSelector so stamps do get laid out
-		itemSelector: '.grid-item',
-		columnWidth: '.grid-sizer'
-	});
+	var tommorow = date.setDate(date.getDate() + 1);	
 
 	service.labelList = [
 		{
@@ -35,7 +29,7 @@ function TodoServices (CONST, $timeout, $rootScope) {
 		}];
 	service.timeSections = ["All", "Today", "Tommorow", "This Week", "Next Week"];
 	service.tasksList = [
-	/*	new Task(
+		new Task(
 			0, 
 			"Doctor appointment", 
 			"16:00 \n30th Hertzel St.",
@@ -55,7 +49,7 @@ function TodoServices (CONST, $timeout, $rootScope) {
 			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, \nwhen an unknown printer took a galley of type and scrambled it \nto make a type specimen book.",
 			CONST.today,			
 			[true, false, false, true]
-		)*/
+		)
 	];
 
 	function Task (id, title, desc, date, labels) {
@@ -105,7 +99,6 @@ function TodoServices (CONST, $timeout, $rootScope) {
 
 angular.module('ToDoApp')
 .service('TodoServices', TodoServices);
-
 
 
 })();
