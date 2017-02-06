@@ -28,8 +28,10 @@
 		float: right;
 	}
 
-	#searchForm .input-group {
-		width: 100%;
+	#searchForm {
+		margin: 0 auto;
+  		padding-left: unset;
+  		width: 100%;
 	}
 
 	.xs-searchbar.ng-hide {
@@ -73,7 +75,7 @@
 		margin-right: unset;
 	}
 
-	#searchForm .input-group {
+	#searchForm .search-input-group {
 		width: 100%;
 	}
 
@@ -87,7 +89,9 @@
   	}
 
   	#searchForm {
-  		margin: 0;
+  		margin: 0 auto;
+  		padding-left: unset;
+  		width: 70%;
   	}
 	
 	.vacationMsg {
@@ -121,8 +125,8 @@
 		width: 98%;		
 	}
 
-	#searchForm .input-group {
-		width: 60%;
+	#searchForm {
+		width: 100%;
 	}
 
 	.sidebar-toggle-btn, .sidebar-toggle-btn:active,
@@ -155,8 +159,8 @@
 		margin-right: 20%;
 	}
 
-	#searchForm .input-group {
-		width: 50%;
+	#searchForm {
+		width: 70%;
 	}
 
 }

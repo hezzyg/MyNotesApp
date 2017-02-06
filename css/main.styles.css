@@ -7,8 +7,8 @@ html, body {
 	font-family: 'Libre Franklin', sans-serif;
 	overflow-x: hidden;
 	background-color: #F2EEE2;
-	/*color: #515151;*/
 }
+
 input {
 	font-family: 'Libre Franklin', sans-serif;
 }
@@ -120,7 +120,6 @@ input {
 
 .md-navbar-icons {
 	float: right;
-
 }
 
 .xs-navbar-icons {
@@ -165,10 +164,11 @@ input {
 /* SEARCH BAR */
 
 #navbarSearch {
+	width: 100%;
 	background-color: #f2dc87;
 	color:  #FB1985;
 	box-shadow: none;
-	font-size: 1.3em;
+	font-size: 1.3em;	
 }
 
 #navbarSearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -185,11 +185,13 @@ input {
 }
 
 #searchForm {
-	/*width: 40%;*/
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 240px;
 }
-
-#searchForm .input-group {
-	width: 40%;	
+#searchForm .search-input-group {
+	width: 100%;	
 	outline: none;
 	border-color: transparent;	
 }
@@ -198,7 +200,7 @@ input {
 	opacity: 1;
 	position: relative;
 	top: 0;
-	transition: all 0.4s ease;
+	transition: all 0.5s ease;
 }
 .xs-searchbar.ng-hide {
 	position: relative;
@@ -215,6 +217,18 @@ input {
 input.form-control:focus {
     border-color: rgb(204, 204, 204);
 	box-shadow: none;	
+}
+
+.clearSearchBtn {
+	float: right;
+	margin-left: -27px;
+	margin-top: -22px;
+	z-index: 1000;
+	background-color: transparent;
+    color: #4f4f4f;
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 0.8em;
 }
 
 
@@ -234,7 +248,6 @@ input.form-control:focus {
 
 .sideBarLi {
 	list-style: none;
-	/*padding-left: 10px;*/
 	line-height: 180%;
 }
 
@@ -244,8 +257,6 @@ input.form-control:focus {
 	transition: all .5s;
 	position: relative;
 	left: 0px;
-	/*transition: all .5s;*/
-
 }
 
 .menuItem.ng-hide {
@@ -265,7 +276,6 @@ input.form-control:focus {
 
 .item {
 	display: inline-block;
-	/*padding-left: 10px;*/
 }
 
 .item:after {
@@ -288,11 +298,7 @@ input.form-control:focus {
 	color: #F6CE21;
 }
 
-.active {
-	/*background-color: rgba(255,255,255,0.8);	*/
-}
-
-.labelColorBullet{	
+.labelColorBullet {	
 	padding-right: 5px;
 	cursor: pointer;
 }
@@ -307,11 +313,8 @@ input.form-control:focus {
 }
 
 .labelEditBtn {
-	/*margin-right: 30px;*/
 	margin-left: -27px;
 	opacity: 0;
-	/*float: right;*/
-	/*top: 8px;*/
 }
 
 .labelEditBtn:hover {
@@ -341,8 +344,7 @@ input.labelInput:focus {
 	border-radius: 2px;
 }
 
-/*.bgHover:hover,*/
- .active.bgHover {	
+.active.bgHover {	
 	background-color: #bfe2f2;	
 }
 
@@ -408,7 +410,6 @@ input.labelInput:focus {
 .addLabelBtn.ng-hide {
 	opacity: 0;	
 	font-size: 0.2em;
-	/*transition: all 0.5s ease;*/
 }
 
 .addLabelBtn{
@@ -464,7 +465,6 @@ input.labelInput:focus {
 }
 
 .successMsg {
-	/*margin-top: 15px;	*/
 	padding: 7px;
 	color: #fb1985;
 	font-weight: 600;
@@ -501,8 +501,6 @@ input.labelInput:focus {
 	margin: 0 auto;
 	margin-top: 90px;
 	opacity: 1;
-	/*display: inline-block;*/
-
 }
 
 .textFloatLeft {
@@ -542,14 +540,11 @@ input.labelInput:focus {
 	font-size: 1.2em;
 	overflow: all;
 	z-index: 100;
-	/*position: relative;*/
-	/*top: 0px;	*/
 	animation-name: taskBoxAnim;
 	animation-duration: 1.2s;
 	min-width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
-	/*transition: all 0.6s ease;*/
 }
 
 @keyframes taskBoxAnim {
@@ -633,14 +628,6 @@ input.labelInput:focus {
 	margin-right: 8px;
 }
 
-input.md-datepicker-input {
-	/*display: none;*/
-}
-
-.md-datepicker-input-container {
-	/*opacity: 0;*/	
-}
-
 .md-datepicker-focused, .md-datepicker-input:focus {
 	border-bottom-color: #FB1985;
 }
@@ -653,10 +640,6 @@ input.md-datepicker-input {
 	width: 15px;
 }
 
-.md-container {
-	/*margin-left: 10px;*/
-}
-
 #saveMsgStatus {
 	margin-left: 20px;
 	font-weight: bold;
@@ -664,7 +647,6 @@ input.md-datepicker-input {
 
 .contentBox {
 	background-color: transparent;	
-	/*width: 100%;*/
 }
 
 .grid { 
@@ -827,14 +809,12 @@ md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:last-of-ty
 
 .highlight {
 	background-color: #f77bb5;
-	/*background-color: #f2da7d;*/	
 }
 
 
 .edit-modal-background {
 	width: 100%;
 	height: 100%;
-	/*margin-top: 50px;*/
 	background-color: rgba(100,100,100,0.6);
 	position: absolute;
 	display: block;

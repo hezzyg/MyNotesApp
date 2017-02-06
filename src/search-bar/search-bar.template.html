@@ -1,5 +1,8 @@
 <form name="searchForm" id="searchForm" class="navbar-form text-center">
-	<div class="input-group">
-		<input id="navbarSearch" type="text" class="form-control" placeholder="Search..." ng-model="$ctrl.term" ng-keyup="$ctrl.updateSearchResults($event)">	
+	<div class="search-input-group">
+		<input id="navbarSearch" type="text" class="form-control" placeholder="Search..." ng-model="$ctrl.term" ng-keyup="$ctrl.updateSearchResults($event)">
+		<button class="clearSearchBtn">
+			<span class="glyphicon glyphicon-remove" ng-click="$ctrl.clearSearch()" ng-show="$ctrl.term.length > 0"></span>
+		</button>
 	</div>
 </form>

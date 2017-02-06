@@ -10,7 +10,11 @@ function SearchBarController ($rootScope) {
 	$ctrl.updateSearchResults = function (event) {
 		event.keyCode == 27 ? $ctrl.term = '' : '';
 		$rootScope.$broadcast('$updateSearchResults', $ctrl.term);
-		// $ctrl.term = $ctrl.searchTerm;
+	};
+
+	$ctrl.clearSearch = function () {
+		$ctrl.term = '';
+		$rootScope.$broadcast('$updateSearchResults', $ctrl.term);
 	};
 
 }
