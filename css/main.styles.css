@@ -22,7 +22,7 @@ input {
 	background-color:#43C0F6;	
 	padding: 60px 15px 15px 15px;
 	color: #515151;
-	overflow-y: hidden;
+	overflow: hidden;
 	z-index: 10;
 	position: fixed;
 	top: 0;
@@ -649,20 +649,21 @@ input.labelInput:focus {
 	background-color: transparent;	
 }
 
-.grid { 
- margin: 0 auto; 
+.grid {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
 }
 
 /* ---- grid-item ---- */
 
-.grid-sizer.col-md-4,
-.grid-item.col-md-4 {  
-  min-width: 306px;
-  padding: 7px;
-}
-
-.grid-item {  
-  float: left;  
+.grid-item { 
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: content;
+  min-width: 250px;
 }
 
 .card {	
