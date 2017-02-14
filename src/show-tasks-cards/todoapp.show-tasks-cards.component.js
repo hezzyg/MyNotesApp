@@ -89,19 +89,6 @@ function ShowTasksController (TodoServices, $scope, CONST) {
 
 
 	/* ******** grid view releated ***********/
-	var $grid = $('.grid').masonry({
-		transitionDuration: '0.4s',
-	  	itemSelector: '.grid-item',
-	  	columnWidth: '.grid-sizer',
-	  	percentPosition: true,
-	  	fitWidth: true,
-	  	stagger: 30
-	});
-
-	$grid.masonry()
-	  .append( $ctrl.tasksList )
-	  .masonry( 'appended', $ctrl.tasksList );
-
 	$ctrl.indexOf = function (task) {
 		return $ctrl.tasksList.indexOf(task);
 	};

@@ -1,8 +1,7 @@
 <div class="grid" ng-cloak>
-	<div class="grid-sizer"></div>
-		<div class="grid-item col-md-4 col-sm-6" ng-repeat="task in $ctrl.tasksList  | orderBy: $index:true | filter:$ctrl.searchTerm">
-			<task-card  task="task" index="$ctrl.indexOf(task)" searchterm="$ctrl.searchTerm" ></task-card>
-		</div>
+	<div class="grid-item" ng-repeat="task in $ctrl.tasksList  | orderBy: $index:true | filter:$ctrl.searchTerm">
+		<task-card  task="task" index="$ctrl.indexOf(task)" searchterm="$ctrl.searchTerm" ></task-card>
+	</div>
 </div>
 <!-- vacation msg -->
 <div class="" ng-show="$ctrl.showVacationMsg == true">
